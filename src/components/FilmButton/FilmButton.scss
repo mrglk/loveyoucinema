@@ -1,0 +1,13 @@
+@import "../../styles/vars";
+
+.button {
+  padding: 9px 20px;
+  border-radius: 2px;
+  border: none;
+  font-size: 1em;
+  font-weight: 600;
+  font-family: $generalFont;
+  //   font-size: 90%;
+  background-color: $accentColor;
+  color: #fff;
+}

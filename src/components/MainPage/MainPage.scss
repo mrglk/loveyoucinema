@@ -1,0 +1,40 @@
+@import "../../styles/vars";
+
+.mainPage__inner {
+  display: flex;
+  flex-direction: column;
+  // justify-content: center;
+  margin-top: 30px;
+}
+
+.mainPage__general {
+  display: flex;
+  justify-content: center;
+  gap: 110px;
+}
+
+.mainPage__imgWrapper {
+  width: 100%;
+  max-width: 700px; // узнать у саши - почему если я убираю max, картинка не сжимается при изменении экрана
+  margin-top: 20px;
+}
+
+.mainPage__img {
+  max-width: 100%;
+  //   height: auto;
+}
+
+.mainPage__buttons {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  gap: 10px;
+  margin-top: 2em;
+}
+
+@media screen and (max-width: $tablet) {
+  .mainPage__buttons {
+    // display: flex;
+    flex-direction: column;
+  }
+}

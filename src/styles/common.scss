@@ -1,0 +1,78 @@
+@import "vars";
+@import "fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+// .hidden {
+//   display: none;
+// }
+
+#root {
+  height: 100%;
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: $generalFont;
+  background-color: $bgColor;
+  color: $textColor;
+}
+
+main {
+  flex: 1 0 auto;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.container__row {
+  width: 80%;
+}
+
+.container__row_wide {
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: center;
+  width: 90%;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+a {
+  color: $textColor;
+  text-decoration: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+p {
+  color: $textColor;
+}
+
+// h1,
+// h2,
+// h3,
+// p {
+//   margin: 0;
+//   padding: 0;
+// }
+
+h1,
+h2,
+h3 {
+  font-family: $accentFont;
+}

@@ -1,0 +1,18 @@
+@import "../../styles/vars";
+
+.score__count {
+  font-size: 6em;
+  font-weight: bold;
+  color: rgb(150, 149, 149);
+}
+
+.score__description {
+  font-weight: bold;
+  color: rgb(150, 149, 149);
+}
+
+@media screen and (max-width: $tablet) {
+  .score {
+    display: none;
+  }
+}

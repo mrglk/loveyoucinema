@@ -1,0 +1,45 @@
+@import "../../styles/vars";
+
+.header {
+  flex: 0 0 auto;
+  height: 6em;
+  box-shadow: 0 0 8px rgb(0 0 0 / 30%);
+}
+.header__inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header__header {
+  font-size: 40px;
+  color: $accentColor;
+}
+
+.header__description {
+  font-family: $generalFont;
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.header__languages {
+  display: flex;
+  gap: 10px;
+}
+
+.header__language {
+  width: 20px;
+
+  &_select {
+    font-weight: 600;
+  }
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.header__icon {
+  width: 100%;
+  //   box-shadow: 0 0 0px 1px rgb(54 149 199);
+}

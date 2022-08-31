@@ -1,0 +1,36 @@
+@import "../../styles/vars";
+
+.progress__inner {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  width: 100%;
+  height: 1.6em;
+  box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
+  border-radius: 2px;
+  border: 2px solid #fff;
+}
+
+.progress__filler {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 100%;
+  background-color: $accentColor;
+  //   background: linear-gradient(
+  //     to bottom,
+  //     #6db3f2 0%,
+  //     #54a3ee 50%,
+  //     #3690f0 51%,
+  //     #1e69de 100%
+  //   );
+  border-radius: inherit;
+  //   text-align:
+  //   text-align: center;
+}
+
+.progress__label {
+  padding: 5px;
+  font-weight: 600;
+  color: rgb(255, 255, 255);
+}
