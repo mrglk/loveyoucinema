@@ -4,15 +4,17 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 // import filmImage from "../../assets/images/film.png";
 import FilmButton from "../FilmButton/FilmButton";
 import { film } from "../../film";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function MainPage() {
   const [completed, setCompleted] = useState<number | null>(null);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
+  const [isTrue, setIsTrue] = useState<boolean | null>(null);
+  // const [isWrong, setIsWrong] = useState<boolean  | null>(null);
   // в useEffect приходят данные об одном рандомном паке фильмов
   // навешиваем обработчик события на кнопки +
-  // в обработчике проверяем, сооветтвует ли название кнопки названию в правильном ответе
+  // в обработчике проверяем, сооветтвует ли название кнопки названию в правильном ответе +
   // если да – setCompleated +10, подсвечиваем кнопку зеленым на несколько секунд, setScore +1, делаем повторный запрос к базе
   // если нет – setCompleated 0, setScore 0, подсвечиваем кнопку красным а правильный ответ зеленым
 
@@ -24,6 +26,9 @@ export default function MainPage() {
     if (e.target.name !== film.tru) {
       setCompleted(0);
       setCurrentScore(0);
+      // подсветить правильную и неправильную кнопки
+      // с таймаутом в несколько секунд делать новый запрос к базе
+      // анимация возвращения прогресс бара обратно
     } else {
       let width = completed === null ? 0 : completed;
       let targetWidth = completed === null ? 10 : completed + 10;
@@ -40,6 +45,8 @@ export default function MainPage() {
       };
 
       setCurrentScore((currentScore) => currentScore + 1);
+      // подсветить правильную кнопку
+      // с таймаутом в несколько секунд делать новый запрос к базе
     }
   };
 
@@ -49,8 +56,64 @@ export default function MainPage() {
       console.log(2);
     } else {
       // подсветить кнопку зеленым
+      console.log(e.target);
+      e.target.isTrue = true;
+      console.log(e.target.isTrue);
     }
   };
+
+  useEffect(() => {
+    // забираем и кладем в локал сторадж
+    let localBestScore = Number(localStorage.getItem("bestScore"));
+    setBestScore(localBestScore);
+  }, []);
+
+  useEffect(() => {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+      localStorage.setItem("bestScore", JSON.stringify(currentScore));
+    }
+  }, [currentScore, bestScore]);
+
+  useEffect(() => {
+    // обнуление score и progress bar
+    if (currentScore === 10) {
+      console.log(currentScore);
+      setTimeout(() => {
+        setCompleted(0);
+        setCurrentScore(0);
+      }, 1000);
+    }
+  }, [currentScore]);
+
+  // useEffect(() => {
+  //   fetchData();
+  // }, []);
+
+  // const fetchData = async () => {
+  //   let data = {
+  //     action: "load",
+  //     cat: 1,
+  //   };
+
+  //   let response = await fetch(
+  //     "https://cors-everywhere.herokuapp.com/http://loveyoucinema.com/script.php",
+  //     {
+  //       method: "POST",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify(data),
+  //     }
+  //   ).then((res) => res);
+
+  //   if (!response.ok) {
+  //     console.log("Ошибка");
+  //   }
+
+  //   console.log(JSON.parse(JSON.stringify(response)));
+  // };
 
   return (
     <main className="container">
@@ -66,10 +129,26 @@ export default function MainPage() {
           <Score score={bestScore} />
         </div>
         <div className="mainPage__buttons">
-          <FilmButton handleClick={(e) => handleClick(e)} name={film.but1} />
-          <FilmButton handleClick={(e) => handleClick(e)} name={film.but2} />
-          <FilmButton handleClick={(e) => handleClick(e)} name={film.but3} />
-          <FilmButton handleClick={(e) => handleClick(e)} name={film.but4} />
+          <FilmButton
+            handleClick={(e) => handleClick(e)}
+            name={film.but1}
+            isTrue={isTrue}
+          />
+          <FilmButton
+            handleClick={(e) => handleClick(e)}
+            name={film.but2}
+            isTrue={isTrue}
+          />
+          <FilmButton
+            handleClick={(e) => handleClick(e)}
+            name={film.but3}
+            isTrue={isTrue}
+          />
+          <FilmButton
+            handleClick={(e) => handleClick(e)}
+            name={film.but4}
+            isTrue={isTrue}
+          />
         </div>
       </div>
     </main>

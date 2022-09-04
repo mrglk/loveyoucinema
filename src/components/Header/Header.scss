@@ -25,6 +25,7 @@
 .header__languages {
   display: flex;
   gap: 10px;
+  margin-left: 5px;
 }
 
 .header__language {
@@ -42,4 +43,22 @@
 .header__icon {
   width: 100%;
   //   box-shadow: 0 0 0px 1px rgb(54 149 199);
+}
+
+@media screen and (max-width: $tablet) {
+  .header__description {
+    display: none;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .header__header {
+    font-size: 22px;
+  }
+}
+
+@media screen and (max-width: $smallMobile) {
+  .header__header {
+    font-size: 16px;
+  }
 }

@@ -76,3 +76,9 @@ h2,
 h3 {
   font-family: $accentFont;
 }
+
+@media screen and (max-width: $tablet) {
+  .container__row_wide {
+    width: 100%;
+  }
+}

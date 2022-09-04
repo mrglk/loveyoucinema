@@ -20,30 +20,44 @@
   align-items: center;
   justify-content: flex-end;
   height: 100%;
-  background-color: $accentColor;
+  // background-color: $accentColor;
   border-radius: inherit;
-  //   background: linear-gradient(
-  //     to bottom,
-  //     #6db3f2 0%,
-  //     #54a3ee 50%,
-  //     #3690f0 51%,
-  //     #1e69de 100%
-  //   );
-
-  // transition: width 0.6s;
-  // transition: background-color 0.6s;
+  background: linear-gradient(
+    to bottom,
+    #6db3f2 0%,
+    #54a3ee 50%,
+    #3690f0 51%,
+    #1e69de 100%
+  );
 }
 
 .progress__filler_start {
-  background-color: inherit;
+  background: inherit;
 }
 
 .progress__label {
-  padding: 5px;
   font-weight: 600;
   color: rgb(255, 255, 255);
 
   &_start {
     color: $textColor;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+  .progress__label {
+    font-size: 13px;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .progress__label {
+    font-size: 11px;
+  }
+}
+
+@media screen and (max-width: $smallMobile) {
+  .progress__label {
+    font-size: 8px;
   }
 }

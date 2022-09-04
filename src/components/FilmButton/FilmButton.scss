@@ -10,4 +10,12 @@
   //   font-size: 90%;
   background-color: $accentColor;
   color: #fff;
+
+  &_true {
+    background-color: rgb(149, 179, 149);
+  }
+
+  &_false {
+    background-color: rgb(203, 125, 125);
+  }
 }
