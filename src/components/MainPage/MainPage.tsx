@@ -5,12 +5,25 @@ import ProgressBar from "../ProgressBar/ProgressBar";
 import FilmButton from "../FilmButton/FilmButton";
 import { film } from "../../film";
 import { useState, useEffect } from "react";
+import { fetchFilm } from "../../store/store";
+import { useTypedSelector, useTypedDispatch } from "../../hooks/redux";
 
 export default function MainPage() {
+  const dispatch = useTypedDispatch();
+  // const filmData = useSelector((film) => film);
+  const state = useTypedSelector((state: any) => state);
+  console.log(state);
+
   const [completed, setCompleted] = useState<number | null>(null);
   const [currentScore, setCurrentScore] = useState(0);
   const [bestScore, setBestScore] = useState(0);
   const [isTrue, setIsTrue] = useState<boolean | null>(null);
+
+  useEffect(() => {
+    document.cookie = "lang=ru";
+    // dispatch(fetchFilm());
+  }, []);
+
   // const [isWrong, setIsWrong] = useState<boolean  | null>(null);
   // в useEffect приходят данные об одном рандомном паке фильмов
   // навешиваем обработчик события на кнопки +
@@ -20,34 +33,48 @@ export default function MainPage() {
 
   // подтягивать в локал сторадж данные о score и доставать их в bestScore
 
-  const handleClick = (e: any) => {
-    console.log(e.target.name);
-
-    if (e.target.name !== film.tru) {
-      setCompleted(0);
+  const handleClick = (e: React.SyntheticEvent<EventTarget>) => {
+    if ((e.target as HTMLButtonElement).name !== film.tru) {
+      removeProgress();
       setCurrentScore(0);
       // подсветить правильную и неправильную кнопки
       // с таймаутом в несколько секунд делать новый запрос к базе
       // анимация возвращения прогресс бара обратно
     } else {
-      let width = completed === null ? 0 : completed;
-      let targetWidth = completed === null ? 10 : completed + 10;
-
-      let id = setInterval(() => addProgress(), 20);
-
-      const addProgress = () => {
-        if (width === targetWidth) {
-          clearInterval(id);
-        } else {
-          setCompleted((completed) => (completed === null ? 1 : completed + 1));
-          width++;
-        }
-      };
-
+      addProgress();
       setCurrentScore((currentScore) => currentScore + 1);
       // подсветить правильную кнопку
       // с таймаутом в несколько секунд делать новый запрос к базе
     }
+  };
+
+  const addProgress = () => {
+    let width = completed === null ? 0 : completed;
+    let targetWidth = completed === null ? 10 : completed + 10;
+    let id = setInterval(() => addOnePercentOfProgress(), 20);
+
+    const addOnePercentOfProgress = () => {
+      if (width === targetWidth) {
+        clearInterval(id);
+      } else {
+        setCompleted((completed) => (completed === null ? 1 : completed + 1));
+        width++;
+      }
+    };
+  };
+
+  const removeProgress = () => {
+    let width = completed;
+    let id = setInterval(() => removeOnePercentOfProgress(), 20);
+
+    const removeOnePercentOfProgress = () => {
+      if (width === 0 || width === null) {
+        clearInterval(id);
+      } else {
+        setCompleted((completed) => (completed === null ? 0 : completed - 1));
+        width--;
+      }
+    };
   };
 
   const highlightButton = (e: any) => {
@@ -87,6 +114,7 @@ export default function MainPage() {
   }, [currentScore]);
 
   // useEffect(() => {
+  //   document.cookie = "lang=ru";
   //   fetchData();
   // }, []);
 
@@ -96,23 +124,21 @@ export default function MainPage() {
   //     cat: 1,
   //   };
 
-  //   let response = await fetch(
-  //     "https://cors-everywhere.herokuapp.com/http://loveyoucinema.com/script.php",
-  //     {
-  //       method: "POST",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json",
-  //       },
-  //       body: JSON.stringify(data),
-  //     }
-  //   ).then((res) => res);
+  //   let response = await fetch("https://loveyoucinema.com/script.php", {
+  //     method: "POST",
+  //     headers: {
+  //       Accept: "application/json",
+  //       "Content-Type": "application/json",
+  //     },
+  //     body: JSON.stringify(data),
+  //   }).then((res) => res);
 
   //   if (!response.ok) {
   //     console.log("Ошибка");
   //   }
+  //   const content = await response.json();
 
-  //   console.log(JSON.parse(JSON.stringify(response)));
+  //   console.log(content);
   // };
 
   return (

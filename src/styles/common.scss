@@ -40,10 +40,7 @@ main {
 }
 
 .container__row_wide {
-  // display: flex;
-  // flex-direction: column;
-  // justify-content: center;
-  width: 90%;
+  width: 100%;
 }
 
 button:hover {
@@ -63,22 +60,14 @@ p {
   color: $textColor;
 }
 
-// h1,
-// h2,
-// h3,
-// p {
-//   margin: 0;
-//   padding: 0;
-// }
-
 h1,
 h2,
 h3 {
   font-family: $accentFont;
 }
 
-@media screen and (max-width: $tablet) {
-  .container__row_wide {
-    width: 100%;
-  }
-}
+// @media screen and (max-width: $tablet) {
+//   .container__row_wide {
+//     width: 100%;
+//   }
+// }
