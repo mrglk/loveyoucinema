@@ -1,35 +1,22 @@
-import { configureStore } from "@reduxjs/toolkit";
-import { combineReducers } from "redux";
 import {
-  FilmActionTypes,
-  FilmActon,
-  FilmState,
-  getFilmAction,
-} from "../types/types";
+  configureStore,
+  PayloadAction,
+  createSlice,
+  createAsyncThunk,
+  AnyAction,
+} from "@reduxjs/toolkit";
 
-const preloadedState: FilmState = {
-  film: {},
+type FilmState = {
+  film: {};
+  loading: boolean;
+  error: string | null;
 };
 
-export const getFilm = (film: getFilmAction) => {
-  return {
-    type: FilmActionTypes.GET_FILM,
-    value: film,
-  };
-};
-
-const reducer = (state = preloadedState, action: FilmActon): FilmState => {
-  const { type, value } = action;
-
-  switch (type) {
-    case FilmActionTypes.GET_FILM:
-      return { film: value };
-    default:
-      return state;
-  }
-};
-
-export const fetchFilm = async () => {
+export const fetchFilm = createAsyncThunk<
+  {},
+  undefined,
+  { rejectValue: string }
+>("film/fetchFilm", async function (_, { rejectWithValue }) {
   let data = {
     action: "load",
     cat: 1,
@@ -46,25 +33,49 @@ export const fetchFilm = async () => {
 
   if (!response.ok) {
     console.log("Ошибка");
+    return rejectWithValue("Server Error!");
   }
+
   const content = await response.json();
-
-  return (dispatch: any) => {
-    console.log(1);
-    dispatch(getFilm(content));
-  };
-};
-
-export const rootReducer = combineReducers({
-  reducer,
+  return content;
 });
 
-export const setupStore = () => {
-  return configureStore({
-    reducer: rootReducer,
-  });
+const initialState: FilmState = {
+  film: {},
+  loading: false,
+  error: null,
 };
 
-export type RootState = ReturnType<typeof reducer>;
-export type AppStore = ReturnType<typeof setupStore>;
-export type AppDispatch = AppStore["dispatch"];
+const filmSlice = createSlice({
+  name: "film",
+  initialState,
+  reducers: {},
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchFilm.pending, (state) => {
+        state.loading = true;
+        state.error = null;
+      })
+      .addCase(fetchFilm.fulfilled, (state, action) => {
+        state.film = action.payload;
+        state.loading = false;
+      });
+    // .addMatcher(isError, (state, action: PayloadAction<string>) => {
+    //   state.error = action.payload;
+    //   state.loading = false;
+    // });
+  },
+});
+
+// function isError(action: AnyAction) {
+//   return action.type.endsWith("rejected");
+// }
+
+export const store = configureStore({
+  reducer: {
+    film: filmSlice.reducer,
+  },
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;

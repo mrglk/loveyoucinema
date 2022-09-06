@@ -3,16 +3,16 @@ import Score from "../Score/Score";
 import ProgressBar from "../ProgressBar/ProgressBar";
 // import filmImage from "../../assets/images/film.png";
 import FilmButton from "../FilmButton/FilmButton";
-import { film } from "../../film";
+// import { film } from "../../film";
 import { useState, useEffect } from "react";
 import { fetchFilm } from "../../store/store";
-import { useTypedSelector, useTypedDispatch } from "../../hooks/redux";
+import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 
 export default function MainPage() {
-  const dispatch = useTypedDispatch();
+  const dispatch = useAppDispatch();
   // const filmData = useSelector((film) => film);
-  const state = useTypedSelector((state: any) => state);
-  console.log(state);
+  const film = useAppSelector((state: any) => state.film.film);
+  console.log(film);
 
   const [completed, setCompleted] = useState<number | null>(null);
   const [currentScore, setCurrentScore] = useState(0);
@@ -21,7 +21,7 @@ export default function MainPage() {
 
   useEffect(() => {
     document.cookie = "lang=ru";
-    // dispatch(fetchFilm());
+    dispatch(fetchFilm());
   }, []);
 
   // const [isWrong, setIsWrong] = useState<boolean  | null>(null);
