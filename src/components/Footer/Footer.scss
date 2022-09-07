@@ -21,3 +21,20 @@
 .footer__description {
   font-weight: 600;
 }
+
+@media screen and (max-width: $mobile) {
+  .footer__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  .footer__reviews {
+    font-size: 13px;
+  }
+
+  .footer__description {
+    font-size: 13px;
+  }
+}

@@ -27,10 +27,10 @@ export default function MainPage() {
 
   useEffect(() => {
     // document.cookie = "lang=en";
-    dispatch(fetchFilm());
-
     let localBestScore = Number(localStorage.getItem("bestScore"));
+
     setBestScore(localBestScore);
+    dispatch(fetchFilm());
   }, [dispatch]);
 
   const handleClick = (e: React.SyntheticEvent<EventTarget>) => {
@@ -90,13 +90,6 @@ export default function MainPage() {
     };
   };
 
-  // const highlightRightButton = (filmName: string) => {
-  //   // const target = (e.target as HTMLButtonElement).name;
-  //   const indexOfTarget = filmsCollection.indexOf(filmName);
-  //   const indexOfRightFilm = filmsCollection.indexOf(trueFilm);
-  // };
-
-  // при изменении текущего счета кладем в локал
   useEffect(() => {
     if (currentScore > bestScore) {
       setBestScore(currentScore);
@@ -104,10 +97,8 @@ export default function MainPage() {
     }
   }, [currentScore, bestScore]);
 
-  // обнуление score и progress bar
   useEffect(() => {
     if (currentScore === 10) {
-      console.log(currentScore);
       setTimeout(() => {
         setCompleted(0);
         setCurrentScore(0);

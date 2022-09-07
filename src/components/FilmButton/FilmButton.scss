@@ -12,10 +12,24 @@
   color: #fff;
 
   &_true {
-    background-color: rgb(149, 179, 149);
+    background-color: rgb(41, 183, 41);
+    transition: background-color 0.2s;
   }
 
   &_false {
-    background-color: rgb(203, 125, 125);
+    background-color: rgb(211, 84, 84);
+    transition: background-color 0.2s;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .button {
+    font-size: 0.8em;
+  }
+}
+
+@media screen and (max-width: $smallMobile) {
+  .button {
+    font-size: 0.6em;
   }
 }

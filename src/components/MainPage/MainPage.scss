@@ -14,9 +14,9 @@
   grid-template-columns: 1fr auto 1fr;
 }
 
-// .mainPage__film {
-//   margin: 0 20px;
-// }
+.mainPage__film {
+  max-width: 770px;
+}
 
 .mainPage__imgWrapper {
   width: 100%;
