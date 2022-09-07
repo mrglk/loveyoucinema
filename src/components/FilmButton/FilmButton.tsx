@@ -5,13 +5,19 @@ import classNames from "classnames";
 type ButtonProps = {
   name: string;
   handleClick: (e: React.MouseEvent<HTMLButtonElement>) => void;
-  isTrue: boolean | null;
+  isRight: boolean | null;
+  isWrong: boolean | null;
 };
 
-export default function FilmButton({ handleClick, name, isTrue }: ButtonProps) {
+export default function FilmButton({
+  handleClick,
+  name,
+  isRight,
+  isWrong,
+}: ButtonProps) {
   const classButton = classNames("button", {
-    button_true: isTrue === true,
-    button_false: isTrue === false,
+    button_true: isRight,
+    button_false: isWrong,
   });
 
   // возможно - при размаунтинге компонента подсвечивать кнопки
