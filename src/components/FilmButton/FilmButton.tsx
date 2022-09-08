@@ -20,8 +20,6 @@ export default function FilmButton({
     button_false: isWrong,
   });
 
-  // возможно - при размаунтинге компонента подсвечивать кнопки
-
   return (
     <button onClick={handleClick} className={classButton} name={name}>
       {name}

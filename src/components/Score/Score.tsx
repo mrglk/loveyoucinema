@@ -2,13 +2,16 @@ import "./Score.scss";
 
 type ScoreProps = {
   score: number;
+  isBest?: boolean;
 };
 
-export default function Score({ score }: ScoreProps) {
+export default function Score({ score, isBest }: ScoreProps) {
   return (
     <div className="score">
-      <div className="score__count">{score}</div>
-      <span className="score__description">Score</span>
+      <span className="score__count">{score}</span>
+      <span className="score__description">
+        {isBest ? "Лучший счет" : "Текущий счет"}
+      </span>
     </div>
   );
 }

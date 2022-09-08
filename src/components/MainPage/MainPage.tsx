@@ -1,9 +1,7 @@
 import "./MainPage.scss";
 import Score from "../Score/Score";
 import ProgressBar from "../ProgressBar/ProgressBar";
-// import filmImage from "../../assets/images/film.png";
 import FilmButton from "../FilmButton/FilmButton";
-// import { film } from "../../film";
 import { useState, useEffect } from "react";
 import { fetchFilm } from "../../store";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
@@ -110,14 +108,14 @@ export default function MainPage() {
     <main className="container">
       <div className="mainPage__inner container__row_wide">
         <div className="mainPage__general">
-          <Score score={currentScore} />
-          <div className="mainPage__film">
+          <div className="mainPage__progress">
+            <Score score={currentScore} />
             <ProgressBar completed={completed} />
-            <div className="mainPage__imgWrapper">
-              <img className="mainPage__img" alt="Film" src={filmData.src} />
-            </div>
+            <Score score={bestScore} isBest={true} />
           </div>
-          <Score score={bestScore} />
+          <div className="mainPage__imgWrapper">
+            <img className="mainPage__img" alt="Film" src={filmData.src} />
+          </div>
         </div>
         <div className="mainPage__buttons">
           {filmsCollection.map((film, i) => (

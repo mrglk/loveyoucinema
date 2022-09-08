@@ -11,7 +11,7 @@ export default function ProgressBar({ completed }: ProgressProps) {
         <div className="progress__inner progress__inner_start">
           <div className="progress__filler progress__filler_start">
             <span className="progress__label progress__label_start">
-              Набери 10 правильных ответов подряд, что бы победить!
+              Набери 10 правильных ответов подряд, чтобы победить!
             </span>
           </div>
         </div>

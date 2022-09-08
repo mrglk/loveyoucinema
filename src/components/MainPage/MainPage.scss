@@ -6,27 +6,26 @@
   margin-top: 30px;
 }
 
-.mainPage__general {
-  // display: flex;
-  // justify-content: center;
-  // gap: 110px;
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
-}
-
-.mainPage__film {
-  max-width: 770px;
+.mainPage__progress {
+  display: flex;
+  justify-content: center;
+  gap: 70px;
+  height: 50px;
 }
 
 .mainPage__imgWrapper {
+  position: relative;
+  height: 0px;
+  padding-bottom: 35%;
   width: 100%;
-  max-width: 700px; // узнать у саши - почему если я убираю max, картинка не сжимается при изменении экрана
-  margin-top: 20px;
+  max-width: 1200px;
 }
 
 .mainPage__img {
-  max-width: 100%;
-  //   height: auto;
+  position: absolute;
+  height: 100%;
+  width: auto;
+  left: 0;
 }
 
 .mainPage__buttons {
@@ -42,16 +41,7 @@
     align-items: center;
   }
 
-  .mainPage__film {
-    margin: 0;
-  }
-
-  .mainPage__general {
-    grid-template-columns: auto;
-    justify-items: center;
-  }
   .mainPage__buttons {
-    // display: flex;
     flex-direction: column;
     width: 85%;
   }

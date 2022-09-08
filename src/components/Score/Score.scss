@@ -1,12 +1,20 @@
 @import "../../styles/vars";
 
+.score {
+  // position: absolute;
+  display: flex;
+  flex-direction: column;
+}
+
 .score__count {
-  font-size: 6em;
+  margin-top: -8px;
+  font-size: 2em;
   font-weight: bold;
   color: rgb(150, 149, 149);
 }
 
 .score__description {
+  font-size: 0.9em;
   font-weight: bold;
   color: rgb(150, 149, 149);
 }

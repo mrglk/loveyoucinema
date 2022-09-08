@@ -4,7 +4,9 @@
   display: flex;
   justify-content: left;
   align-items: center;
-  width: 100%;
+  width: 65vw;
+  // width: 100%;
+  max-width: 900px;
   height: 1.6em;
   box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
   border-radius: 2px;
@@ -45,6 +47,9 @@
 }
 
 @media screen and (max-width: $tablet) {
+  .progress__inner {
+    width: 85vw;
+  }
   .progress__label {
     font-size: 13px;
   }
