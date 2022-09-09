@@ -6,6 +6,12 @@
   margin-top: 30px;
 }
 
+.mainPage__general {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .mainPage__progress {
   display: flex;
   justify-content: center;
@@ -15,6 +21,8 @@
 
 .mainPage__imgWrapper {
   position: relative;
+  display: flex;
+  justify-content: center;
   height: 0px;
   padding-bottom: 35%;
   width: 100%;
@@ -25,7 +33,6 @@
   position: absolute;
   height: 100%;
   width: auto;
-  left: 0;
 }
 
 .mainPage__buttons {
@@ -41,8 +48,18 @@
     align-items: center;
   }
 
+  .mainPage__imgWrapper {
+    padding-bottom: 50%;
+  }
+
   .mainPage__buttons {
     flex-direction: column;
     width: 85%;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .mainPage__imgWrapper {
+    padding-bottom: 55%;
   }
 }
