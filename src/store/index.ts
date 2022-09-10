@@ -1,19 +1,29 @@
 import {
   configureStore,
-  // PayloadAction,
+  PayloadAction,
   createSlice,
   createAsyncThunk,
   // AnyAction,
 } from "@reduxjs/toolkit";
 
-type FilmState = {
-  film: {};
+type SingleFilm = {
+  but1: string;
+  but2: string;
+  but3: string;
+  but4: string;
+  do: string;
+  src: string;
+  tru: string;
+};
+
+export type FilmState = {
+  film: SingleFilm;
   loading: boolean;
   error: string | null;
 };
 
 export const fetchFilm = createAsyncThunk<
-  {},
+  SingleFilm,
   undefined,
   { rejectValue: string }
 >("film/fetchFilm", async function (_, { rejectWithValue }) {
@@ -41,7 +51,15 @@ export const fetchFilm = createAsyncThunk<
 });
 
 const initialState: FilmState = {
-  film: {},
+  film: {
+    but1: "",
+    but2: "",
+    but3: "",
+    but4: "",
+    do: "",
+    src: "",
+    tru: "",
+  },
   loading: false,
   error: null,
 };
@@ -56,25 +74,25 @@ const filmSlice = createSlice({
         state.loading = true;
         state.error = null;
       })
-      .addCase(fetchFilm.fulfilled, (state, action) => {
-        state.film = action.payload;
-        state.loading = false;
-      });
+      .addCase(
+        fetchFilm.fulfilled,
+        (state, action: PayloadAction<SingleFilm>) => {
+          state.film = action.payload;
+          state.loading = false;
+        }
+      );
     // .addMatcher(isError, (state, action: PayloadAction<string>) => {
     //   state.error = action.payload;
     //   state.loading = false;
     // });
   },
 });
-
 // function isError(action: AnyAction) {
 //   return action.type.endsWith("rejected");
 // }
 
 export const store = configureStore({
-  reducer: {
-    film: filmSlice.reducer,
-  },
+  reducer: filmSlice.reducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

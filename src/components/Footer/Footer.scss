@@ -9,32 +9,17 @@
 
 .footer__inner {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
-}
-
-.footer__reviews {
-  text-decoration: underline;
-  font-weight: 500;
 }
 
 .footer__description {
   font-weight: 600;
+  font-size: 14px;
 }
 
-@media screen and (max-width: $mobile) {
-  .footer__inner {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-  }
-
-  .footer__reviews {
-    font-size: 13px;
-  }
-
+@media screen and (max-width: $tablet) {
   .footer__description {
-    font-size: 13px;
+    font-size: 12px;
   }
 }
