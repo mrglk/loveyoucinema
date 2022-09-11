@@ -5,24 +5,20 @@
   justify-content: left;
   align-items: center;
   width: 65vw;
-  // width: 100%;
   max-width: 900px;
   height: 1.6em;
   box-shadow: 0 0 5px 1px rgb(0 0 0 / 20%);
   border-radius: 2px;
   border: 2px solid #fff;
-
-  &_start {
-    justify-content: center;
-  }
 }
 
 .progress__filler {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
+  width: 0;
   height: 100%;
-  // background-color: $accentColor;
   border-radius: inherit;
   background: linear-gradient(
     to bottom,
@@ -34,15 +30,12 @@
   transition: width 0.5s ease-in-out;
 }
 
-.progress__filler_start {
-  background: inherit;
-}
-
 .progress__label {
   font-weight: 600;
   color: rgb(255, 255, 255);
 
   &_start {
+    width: 100%;
     color: $textColor;
   }
 }
