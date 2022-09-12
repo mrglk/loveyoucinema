@@ -75,30 +75,28 @@ export default function MainPage() {
 
   console.log(1);
   return (
-    <main className="container">
-      <div className="mainPage__inner container__row_wide">
-        <div className="mainPage__general">
-          <div className="mainPage__progress">
-            <Score score={currentScore} />
-            <ProgressBar completed={currentScore * 10} isStart={startMode} />
-            <Score score={bestScore} isBest={true} />
-          </div>
-          <div className="mainPage__imgWrapper">
-            <img className="mainPage__img" alt="Film" src={filmData.src} />
-          </div>
+    <div className="mainPage container__row_wide">
+      <div className="mainPage__general">
+        <div className="mainPage__progress">
+          <Score score={currentScore} />
+          <ProgressBar completed={currentScore * 10} isStart={startMode} />
+          <Score score={bestScore} isBest={true} />
         </div>
-        <div className="mainPage__buttons">
-          {filmsCollection.map((film, i) => (
-            <FilmButton
-              key={i}
-              handleClick={(e) => handleClick(film)}
-              name={film}
-              isRight={right === i}
-              isWrong={wrong === i}
-            />
-          ))}
+        <div className="mainPage__imgWrapper">
+          <img className="mainPage__img" alt="Film" src={filmData.src} />
         </div>
       </div>
-    </main>
+      <div className="mainPage__buttons">
+        {filmsCollection.map((film, i) => (
+          <FilmButton
+            key={i}
+            handleClick={(e) => handleClick(film)}
+            name={film}
+            isRight={right === i}
+            isWrong={wrong === i}
+          />
+        ))}
+      </div>
+    </div>
   );
 }
