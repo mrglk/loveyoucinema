@@ -6,10 +6,10 @@ import { useState, useEffect } from "react";
 import { FilmState, fetchFilm } from "../../store";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 
-export default function MainPage() {
+export const MainPage = () => {
   const dispatch = useAppDispatch();
   const filmData = useAppSelector((state: FilmState) => state.film);
-  console.log(filmData);
+  const isLoading = useAppSelector((state) => state.loading);
   const filmsCollection = [
     filmData.but1,
     filmData.but2,
@@ -31,6 +31,21 @@ export default function MainPage() {
     setBestScore(localBestScore);
     dispatch(fetchFilm());
   }, [dispatch]);
+
+  useEffect(() => {
+    if (currentScore > bestScore) {
+      setBestScore(currentScore);
+      localStorage.setItem("bestScore", JSON.stringify(currentScore));
+    }
+  }, [currentScore, bestScore]);
+
+  useEffect(() => {
+    if (currentScore === 10) {
+      setTimeout(() => {
+        setCurrentScore(0);
+      }, 1000);
+    }
+  }, [currentScore]);
 
   const handleClick = (target: string) => {
     const indexOfTarget = filmsCollection.indexOf(target);
@@ -58,21 +73,6 @@ export default function MainPage() {
     }
   };
 
-  useEffect(() => {
-    if (currentScore > bestScore) {
-      setBestScore(currentScore);
-      localStorage.setItem("bestScore", JSON.stringify(currentScore));
-    }
-  }, [currentScore, bestScore]);
-
-  useEffect(() => {
-    if (currentScore === 10) {
-      setTimeout(() => {
-        setCurrentScore(0);
-      }, 1000);
-    }
-  }, [currentScore]);
-
   console.log(1);
   return (
     <div className="mainPage container__row_wide">
@@ -83,7 +83,9 @@ export default function MainPage() {
           <Score score={bestScore} isBest={true} />
         </div>
         <div className="mainPage__imgWrapper">
-          <img className="mainPage__img" alt="Film" src={filmData.src} />
+          {!isLoading && (
+            <img className="mainPage__img" alt="Film" src={filmData.src} />
+          )}
         </div>
       </div>
       <div className="mainPage__buttons">
@@ -99,4 +101,4 @@ export default function MainPage() {
       </div>
     </div>
   );
-}
+};
