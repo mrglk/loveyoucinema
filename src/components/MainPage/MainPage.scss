@@ -63,3 +63,59 @@
     padding-bottom: 55%;
   }
 }
+
+// .fade-enter .mainPage__img {
+//   opacity: 0;
+//   transform: translateX(-100%);
+// }
+// .fade-enter-active .mainPage__img {
+//   opacity: 1;
+//   transform: translateX(0%);
+// }
+// .fade-exit .mainPage__img {
+//   opacity: 1;
+//   transform: translateX(0%);
+// }
+// .fade-exit-active .mainPage__img {
+//   opacity: 0;
+//   transform: translateX(100%);
+// }
+// .fade-enter-active .mainPage__img,
+// .fade-exit-active .mainPage__img {
+//   transition: opacity 500ms, transform 500ms;
+// }
+
+///////
+
+// .fade-enter-active .btn {
+//   animation: fade-in 500ms forwards;
+// }
+
+// .fade-exit-active .btn {
+//   animation: fade-out 500ms forwards;
+// }
+
+.fade-enter {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+
+.fade-enter-active {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.fade-exit {
+  opacity: 1;
+  transform: translateX(0%);
+}
+
+.fade-exit-active {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
+.fade-exit-active,
+.fade-enter-active {
+  transition: opacity 500ms, transform 500ms;
+}

@@ -2,14 +2,17 @@ import "./MainPage.scss";
 import Score from "../Score/Score";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import FilmButton from "../FilmButton/FilmButton";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { FilmState, fetchFilm } from "../../store";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
+import { SwitchTransition, CSSTransition } from "react-transition-group";
 
 export const MainPage = () => {
+  const nodeRef = useRef<any>(null);
+
   const dispatch = useAppDispatch();
   const filmData = useAppSelector((state: FilmState) => state.film);
-  const isLoading = useAppSelector((state) => state.loading);
+  // const isLoading = useAppSelector((state) => state.loading);
   const filmsCollection = [
     filmData.but1,
     filmData.but2,
@@ -83,9 +86,26 @@ export const MainPage = () => {
           <Score score={bestScore} isBest={true} />
         </div>
         <div className="mainPage__imgWrapper">
-          {!isLoading && (
-            <img className="mainPage__img" alt="Film" src={filmData.src} />
-          )}
+          <SwitchTransition mode="out-in">
+            <CSSTransition
+              nodeRef={nodeRef}
+              key={filmData.src}
+              addEndListener={(done: () => void) => {
+                nodeRef.current.addEventListener("transitionend", done, false);
+              }}
+              classNames="fade">
+              {!filmData.src ? (
+                <div></div>
+              ) : (
+                <img
+                  ref={nodeRef}
+                  className="mainPage__img"
+                  alt="Film"
+                  src={filmData.src}
+                />
+              )}
+            </CSSTransition>
+          </SwitchTransition>
         </div>
       </div>
       <div className="mainPage__buttons">
