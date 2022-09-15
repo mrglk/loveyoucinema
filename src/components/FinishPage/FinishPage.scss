@@ -4,14 +4,36 @@
   margin-top: 120px;
 }
 
-// .finishPage__header {
-//   margin-bottom: 15px;
-// }
+.finishPage__header {
+  font-size: 40px;
+}
 
 .finishPage__description {
-  margin-top: 13px;
+  font-size: 20px;
+  margin-top: 30px;
+  font-weight: 500;
 }
 
 .finishPage__share {
-  margin-top: 15px;
+  display: flex;
+  justify-content: center;
+  gap: 6px;
+  margin-top: 20px;
+}
+
+.finishPage__continue {
+  margin-top: 80px;
+}
+
+.finishPage__button {
+  padding: 15px 25px;
+  border-radius: 16px;
+  background-color: $accentColor;
+  color: $bgColor;
+  font-weight: 600;
+
+  &:hover {
+    background-color: $textColor;
+    transition: all 0.3s;
+  }
 }

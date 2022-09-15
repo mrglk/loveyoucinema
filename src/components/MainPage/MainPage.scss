@@ -33,6 +33,7 @@
   position: absolute;
   height: 100%;
   width: auto;
+  border-radius: 7px;
 }
 
 .mainPage__buttons {
@@ -43,57 +44,7 @@
   margin-top: 2em;
 }
 
-@media screen and (max-width: $tablet) {
-  .mainPage {
-    align-items: center;
-  }
-
-  .mainPage__imgWrapper {
-    padding-bottom: 50%;
-  }
-
-  .mainPage__buttons {
-    flex-direction: column;
-    width: 85%;
-  }
-}
-
-@media screen and (max-width: $mobile) {
-  .mainPage__imgWrapper {
-    padding-bottom: 55%;
-  }
-}
-
-// .fade-enter .mainPage__img {
-//   opacity: 0;
-//   transform: translateX(-100%);
-// }
-// .fade-enter-active .mainPage__img {
-//   opacity: 1;
-//   transform: translateX(0%);
-// }
-// .fade-exit .mainPage__img {
-//   opacity: 1;
-//   transform: translateX(0%);
-// }
-// .fade-exit-active .mainPage__img {
-//   opacity: 0;
-//   transform: translateX(100%);
-// }
-// .fade-enter-active .mainPage__img,
-// .fade-exit-active .mainPage__img {
-//   transition: opacity 500ms, transform 500ms;
-// }
-
-///////
-
-// .fade-enter-active .btn {
-//   animation: fade-in 500ms forwards;
-// }
-
-// .fade-exit-active .btn {
-//   animation: fade-out 500ms forwards;
-// }
+// анимация смены картинки >>
 
 .fade-enter {
   opacity: 0;
@@ -118,4 +69,26 @@
 .fade-exit-active,
 .fade-enter-active {
   transition: opacity 500ms, transform 500ms;
+}
+
+
+@media screen and (max-width: $tablet) {
+  .mainPage {
+    align-items: center;
+  }
+
+  .mainPage__imgWrapper {
+    padding-bottom: 50%;
+  }
+
+  .mainPage__buttons {
+    flex-direction: column;
+    width: 85%;
+  }
+}
+
+@media screen and (max-width: $mobile) {
+  .mainPage__imgWrapper {
+    padding-bottom: 55%;
+  }
 }
