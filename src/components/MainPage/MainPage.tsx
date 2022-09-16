@@ -6,9 +6,11 @@ import { useState, useEffect, useRef } from "react";
 import { FilmState, fetchFilm } from "../../store";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
+import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
   const nodeRef = useRef<any>(null);
+  const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const filmData = useAppSelector((state: FilmState) => state.film);
@@ -70,13 +72,22 @@ export const MainPage = () => {
       setCurrentScore((currentScore) => currentScore + 1);
 
       setTimeout(() => {
-        setRight(null);
-        dispatch(fetchFilm());
+        console.log(currentScore)
+        if (currentScore === 9) { // тут нужно пофиксить то, что счет 10 не показывает
+          switchToFinishPage()
+        } else {
+          setRight(null);
+          dispatch(fetchFilm());
+        }
       }, 2000);
     }
   };
 
-  console.log(1);
+  const switchToFinishPage = () => {
+    navigate('/finish');
+  }
+
+  // console.log(1);
   return (
     <div className="mainPage container__row_wide">
       <div className="mainPage__general">
