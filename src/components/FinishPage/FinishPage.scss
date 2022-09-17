@@ -14,11 +14,19 @@
   font-weight: 500;
 }
 
+#dark .finishPage__description {
+  color: $textColor_dark;
+}
+
 .finishPage__share {
   display: flex;
   justify-content: center;
   gap: 6px;
   margin-top: 20px;
+}
+
+.finishPage__icon {
+  fill: $accentColor_dark;
 }
 
 .finishPage__continue {
@@ -34,6 +42,16 @@
 
   &:hover {
     background-color: $textColor;
+    transition: all 0.3s;
+  }
+}
+
+#dark .finishPage__button{
+  background-color: $accentColor_dark;
+
+  &:hover {
+    background-color: $textColor_dark;
+    color: $textColor;
     transition: all 0.3s;
   }
 }

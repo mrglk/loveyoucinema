@@ -8,24 +8,36 @@ import {
   Routes,
   Route,
 } from "react-router-dom";
+import { createContext, useState } from "react";
+const ThemeContext = createContext<ThemeContextType | null>(null);
+
+type ThemeContextType = {
+  theme: string;
+  toggleTheme: () => void;
+};
 
 const App = () => {
+  const [theme, setTheme] = useState<string>('dark');
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === 'light' ? 'dark' : 'light' ))
+  }
+
   return (
+    <ThemeContext.Provider value={{theme, toggleTheme}}>
     <Router>
-          <div className="App">
-      <Header />
-      <main>
-        {/* <MainPage /> */}
-        {/* <FinishPage /> */}
-        <Routes>
-            <Route path="/" element={<MainPage />} />
-            <Route path="/finish" element={<FinishPage/>} />
-            {/* <Route path="*" element={<NoMatch />} /> */}
-          </Routes>
-      </main>
-      <Footer />
+    <div className="App" id={theme}>
+                <Header />
+                <main>
+                  <Routes>
+                      <Route path="/" element={<MainPage />} />
+                      <Route path="/finish" element={<FinishPage/>} />
+                      {/* <Route path="*" element={<NoMatch />} /> */}
+                    </Routes>
+                </main>
+                <Footer handleClick={toggleTheme} theme={theme}/>
     </div>
     </Router>
+    </ThemeContext.Provider>
   );
 };
 

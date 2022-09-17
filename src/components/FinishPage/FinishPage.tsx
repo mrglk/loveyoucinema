@@ -22,7 +22,7 @@ export default function FinishPage() {
           href={`http://www.facebook.com/sharer.php?u=loveyoucinema.com&t=Я отгадал 10 фильмов подряд`}
           target="_blank"
           rel="noreferrer">
-          <img alt="Facebook" src={Facebook} />
+          <img alt="Facebook" src={Facebook} className="finishPage__icon"/>
         </a>
         <a
           href={`http://vk.com/share.php?url=loveyoucinema.com&title="Название"&description="fegrhtj"`}

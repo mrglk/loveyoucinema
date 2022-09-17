@@ -22,6 +22,10 @@
   }
 }
 
+#dark .button{
+  color: $textColor_dark;
+}
+
 @media screen and (max-width: $mobile) {
   .button {
     font-size: 0.8em;

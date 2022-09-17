@@ -6,13 +6,9 @@
   padding: 0;
 }
 
-// .hidden {
-//   display: none;
+// #root {
+//   height: 100vh;
 // }
-
-#root {
-  height: 100%;
-}
 
 html,
 body {
@@ -23,6 +19,10 @@ body {
   font-family: $generalFont;
   background-color: $bgColor;
   color: $textColor;
+}
+
+#dark body {
+  color: $textColor_dark;
 }
 
 main {

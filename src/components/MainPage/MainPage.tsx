@@ -9,6 +9,7 @@ import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
+  // const ThemeContext = createContext(null);
   const nodeRef = useRef<any>(null);
   const navigate = useNavigate();
 

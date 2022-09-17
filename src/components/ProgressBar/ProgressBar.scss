@@ -12,6 +12,10 @@
   border: 2px solid #fff;
 }
 
+#dark .progress__inner {
+  border-color: $textColor_dark;
+}
+
 .progress__filler {
   position: relative;
   display: flex;
@@ -19,7 +23,7 @@
   justify-content: flex-end;
   width: 0;
   height: 100%;
-  border-radius: inherit;
+  border-radius: 5px;
   background: linear-gradient(
     to bottom,
     #6db3f2 0%,
@@ -28,6 +32,16 @@
     #1e69de 100%
   );
   transition: width 0.5s ease-in-out;
+}
+
+#dark .progress__filler {
+  background: linear-gradient(
+    to bottom,
+    #5f9fd6 0%,
+    #488fd2 50%,
+    #2b7acf 51%,
+    #1858c0 100%
+  );
 }
 
 .progress__label {
@@ -39,6 +53,10 @@
     width: 100%;
     color: $textColor;
   }
+}
+
+#dark .progress__label {
+  color: $textColor_dark;
 }
 
 @media screen and (max-width: $tablet) {
