@@ -13,7 +13,7 @@
 }
 
 #dark .progress__inner {
-  border-color: $textColor_dark;
+  border-color: #292929;;
 }
 
 .progress__filler {
@@ -37,10 +37,10 @@
 #dark .progress__filler {
   background: linear-gradient(
     to bottom,
-    #5f9fd6 0%,
-    #488fd2 50%,
-    #2b7acf 51%,
-    #1858c0 100%
+    #5e9acf 0%,
+    #478bcb 50%,
+    #2c78c8 51%,
+    #1853b3 100%
   );
 }
 

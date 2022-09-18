@@ -23,6 +23,14 @@ export default function FinishPage() {
           target="_blank"
           rel="noreferrer">
           <img alt="Facebook" src={Facebook} className="finishPage__icon"/>
+          {/* <svg className="finishPage__icon"
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 1024 1024"
+          width="50px"
+          height="50px"
+          fill="#0e83cd"
+          data-name="Ebene 1"
+          /> */}
         </a>
         <a
           href={`http://vk.com/share.php?url=loveyoucinema.com&title="Название"&description="fegrhtj"`}

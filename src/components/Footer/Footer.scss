@@ -21,7 +21,7 @@
 }
 
 .footer__description {
-  font-weight: 600;
+  font-weight: 500;
   font-size: 14px;
 }
 
@@ -32,7 +32,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  gap: 8px;
 }
 
 #dark .footer__label {
@@ -44,3 +46,18 @@
     font-size: 12px;
   }
 }
+
+@media screen and (max-width: $mobile) {
+  .footer__inner {
+    flex-direction: column-reverse;
+    justify-content: space-evenly;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
+  }
+
+  .footer__description {
+    font-size: 9px;
+  }
+}
+

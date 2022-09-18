@@ -21,12 +21,9 @@ body {
   color: $textColor;
 }
 
-#dark body {
-  color: $textColor_dark;
-}
-
 main {
   flex: 1 0 auto;
+// background-color: #4f9dcd;  
 }
 
 .container {
