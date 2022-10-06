@@ -36,6 +36,7 @@ export const MainPage = () => {
 
     setBestScore(localBestScore);
     dispatch(fetchFilm());
+    console.log(bestScore)
   }, [dispatch]);
 
   useEffect(() => {

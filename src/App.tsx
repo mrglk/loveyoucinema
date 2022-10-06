@@ -17,9 +17,13 @@ type ThemeContextType = {
 };
 
 const App = () => {
-  const [theme, setTheme] = useState<string>('dark');
+  const currentTheme = localStorage.getItem('theme') || 'light';
+  const [theme, setTheme] = useState<string>(currentTheme);
+
   const toggleTheme = () => {
-    setTheme((curr) => (curr === 'light' ? 'dark' : 'light' ))
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('theme', newTheme)
   }
 
   return (
@@ -31,7 +35,6 @@ const App = () => {
                   <Routes>
                       <Route path="/" element={<MainPage />} />
                       <Route path="/finish" element={<FinishPage/>} />
-                      {/* <Route path="*" element={<NoMatch />} /> */}
                     </Routes>
                 </main>
                 <Footer handleClick={toggleTheme} theme={theme}/>
