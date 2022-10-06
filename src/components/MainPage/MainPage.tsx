@@ -9,13 +9,12 @@ import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 
 export const MainPage = () => {
-  // const ThemeContext = createContext(null);
+  console.log('рендер') // проверка ререндеров
   const nodeRef = useRef<any>(null);
   const navigate = useNavigate();
 
   const dispatch = useAppDispatch();
   const filmData = useAppSelector((state: FilmState) => state.film);
-  // const isLoading = useAppSelector((state) => state.loading);
   const filmsCollection = [
     filmData.but1,
     filmData.but2,
@@ -36,7 +35,6 @@ export const MainPage = () => {
 
     setBestScore(localBestScore);
     dispatch(fetchFilm());
-    console.log(bestScore)
   }, [dispatch]);
 
   useEffect(() => {
@@ -74,9 +72,9 @@ export const MainPage = () => {
       setCurrentScore((currentScore) => currentScore + 1);
 
       setTimeout(() => {
-        console.log(currentScore)
-        if (currentScore === 9) { // тут нужно пофиксить то, что счет 10 не показывает
-          switchToFinishPage()
+        if (currentScore === 9) {
+          // тут нужно пофиксить то, что счет 10 не показывает
+          switchToFinishPage();
         } else {
           setRight(null);
           dispatch(fetchFilm());
@@ -86,10 +84,9 @@ export const MainPage = () => {
   };
 
   const switchToFinishPage = () => {
-    navigate('/finish');
-  }
+    navigate("/finish");
+  };
 
-  // console.log(1);
   return (
     <div className="mainPage container__row_wide">
       <div className="mainPage__general">

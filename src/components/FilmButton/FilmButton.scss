@@ -25,6 +25,16 @@
 #dark .button{
   background-color: $accentColor_dark;
   color: $textColor_dark;
+
+  &_true {
+    background-color: rgb(41, 183, 41);
+    transition: background-color 0.2s;
+  }
+
+  &_false {
+    background-color: rgb(211, 84, 84);
+    transition: background-color 0.2s;
+  }
 }
 
 @media screen and (max-width: $mobile) {

@@ -31,7 +31,13 @@
 }
 
 .finishPage__icon {
-  fill: white;
+  fill: $accentColor;
+  width: 50px;
+  height: 50px;
+}
+
+#dark .finishPage__icon {
+  fill: $accentColor_dark;
 }
 
 .finishPage__continue {
@@ -58,5 +64,57 @@
     background-color: $textColor_dark;
     color: $textColor;
     transition: all 0.3s;
+  }
+}
+
+@media screen and (max-width: $tablet) {
+
+.finishPage {
+  margin-top: 100px;
+}
+
+.finishPage__header {
+  font-size: 30px;
+}
+
+.finishPage__description {
+  font-size: 16px;
+  margin-top: 25px;
+}
+
+.finishPage__share {
+  gap: 6px;
+  margin-top: 16px;
+}
+
+.finishPage__icon {
+  fill: $accentColor;
+  width: 40px;
+  height: 40px;
+}
+
+.finishPage__continue {
+  margin-top: 70px;
+}
+
+}
+
+@media screen and (max-width: $mobile) {
+  .finishPage {
+    margin-top: 70px;
+  }
+  
+  .finishPage__header {
+    font-size: 22px;
+  }
+  
+  .finishPage__description {
+    font-size: 13px;
+    margin-top: 21px;
+  }
+  
+  .finishPage__icon {
+    width: 35px;
+    height: 35px;
   }
 }
