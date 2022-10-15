@@ -118,3 +118,20 @@
     height: 35px;
   }
 }
+
+@media screen and (max-width: $smallMobile) {
+  .finishPage__icon {
+    width: 32px;
+    height: 32px;
+  }
+  
+  .finishPage__continue {
+    margin-top: 45px;
+  }
+
+  .finishPage__button {
+    font-size: 12px;
+    padding: 13px 22px;
+    border-radius: 13px;
+  }
+}

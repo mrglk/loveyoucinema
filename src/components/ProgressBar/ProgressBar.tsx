@@ -6,6 +6,7 @@ type ProgressProps = {
 };
 
 export default function ProgressBar({ completed, isStart }: ProgressProps) {
+  console.log(completed)
   return (
     <div className="progress">
       <div className="progress__inner">
