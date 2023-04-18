@@ -5,6 +5,7 @@ import {
   createAsyncThunk,
   // AnyAction,
 } from "@reduxjs/toolkit";
+import { getPageLang } from "../helpers/helpers";
 
 type SingleFilm = {
   but1: string;
@@ -27,16 +28,18 @@ export const fetchFilm = createAsyncThunk<
   undefined,
   { rejectValue: string }
 >("film/fetchFilm", async function (_, { rejectWithValue }) {
+  let lang = getPageLang();
   let data = {
     action: "load",
     cat: 1,
+    lang: lang
   };
 
   let response = await fetch("https://loveyoucinema.com/script.php", {
     method: "POST",
     headers: {
       Accept: "application/json",
-      "Content-Type": "application/json",
+      "Content-Type": "application/json"
     },
     body: JSON.stringify(data),
   }).then((res) => res);
@@ -61,7 +64,7 @@ const initialState: FilmState = {
     tru: "",
   },
   loading: false,
-  error: null,
+  error: null
 };
 
 const filmSlice = createSlice({

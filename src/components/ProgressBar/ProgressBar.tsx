@@ -1,4 +1,5 @@
 import "./ProgressBar.scss";
+import { getPageLang } from "../../helpers/helpers";
 
 type ProgressProps = {
   completed: number | null;
@@ -6,13 +7,14 @@ type ProgressProps = {
 };
 
 export default function ProgressBar({ completed, isStart }: ProgressProps) {
-  console.log(completed)
+  const lang = getPageLang();
+
   return (
     <div className="progress">
       <div className="progress__inner">
         {isStart && (
           <div className="progress__label progress__label_start">
-            Набери 10 правильных ответов подряд, чтобы победить!
+            {lang === 'ru' ? 'Набери 10 правильных ответов подряд, чтобы победить!' : 'Get 10 correct answers in a row to win!'}
           </div>
         )}
         <div style={{ width: `${completed}%` }} className="progress__filler">

@@ -18,6 +18,7 @@
 
 .header__header {
   font-size: 40px;
+  line-height: 20px;
   color: $accentColor;
 }
 
@@ -39,17 +40,19 @@
   display: flex;
   gap: 10px;
   margin-left: 5px;
+  margin-top: 10px;
 }
 
 .header__language {
+  cursor: pointer;
+  border: none;
+  font-size: 1em;
+  background-color: transparent;
   width: 20px;
+  transition: font-weight 0.1s ease-in;
 
-  &_select {
+  &_select, &:hover {
     font-weight: 600;
-  }
-
-  &:hover {
-    text-decoration: underline;
   }
 }
 
@@ -70,6 +73,10 @@
 @media screen and (max-width: $mobile) {
   .header__header {
     font-size: 22px;
+  }
+
+  .header__languages {
+    margin-top: 0;
   }
 }
 

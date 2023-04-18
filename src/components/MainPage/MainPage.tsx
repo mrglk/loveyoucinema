@@ -8,8 +8,11 @@ import { useAppSelector, useAppDispatch } from "../../hooks/redux";
 import { SwitchTransition, CSSTransition } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 
-export const MainPage = () => {
-  console.log('рендер') // проверка ререндеров
+type MainProps = {
+  lang: string;
+};
+
+export const MainPage = ({ lang }: MainProps) => {
   const nodeRef = useRef<any>(null);
   const navigate = useNavigate();
 
@@ -30,12 +33,11 @@ export const MainPage = () => {
   const [wrong, setWrong] = useState<number | null>(null);
 
   useEffect(() => {
-    // document.cookie = "lang=en";
     let localBestScore = Number(localStorage.getItem("bestScore"));
 
     setBestScore(localBestScore);
     dispatch(fetchFilm());
-  }, [dispatch]);
+  }, [dispatch, lang]);
 
   useEffect(() => {
     if (currentScore > bestScore) {
@@ -48,7 +50,7 @@ export const MainPage = () => {
     if (currentScore === 10) {
       setTimeout(() => {
         setCurrentScore(0);
-      }, 1000);
+      }, 3000);
     }
   }, [currentScore]);
 

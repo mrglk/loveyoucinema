@@ -1,5 +1,6 @@
 import "./Footer.scss";
 import ReactSwitch from "react-switch";
+import { getPageLang } from "../../helpers/helpers";
 
 type FooterProps = {
   handleClick: () => void;
@@ -8,12 +9,14 @@ type FooterProps = {
 
 
 export default function Footer({handleClick, theme}: FooterProps) {
+  const lang = getPageLang();
+
   return (
     <footer className="footer container">
       <div className="footer__inner container__row">
         <div className="footer__description">LoveYouCinema.com © 2022</div>
         <div className="footer__switch">
-        <label className="footer__label">{theme === 'light' ? 'Light mode' : 'Dark mode'}</label>
+        <label className="footer__label">{theme === 'light' ? lang === 'ru' ? "Светлая тема" : 'Light mode' : lang === 'ru' ? 'Темная тема' : 'Dark mode'}</label>
         <ReactSwitch onChange={handleClick} checked={theme === 'dark'}
         onColor="#4f9dcd"
         onHandleColor="#0a68a2"
