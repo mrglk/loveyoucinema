@@ -21,9 +21,9 @@ export default function Header({ toggleLang}: HeaderProps) {
         <div className="header__languages">
           <button onClick={() => toggleLang('ru')} className={lang === 'ru' ? "header__language header__language_select" : "header__language"}>RU</button>
           <button onClick={() => toggleLang('en')} className={lang === 'en' ? "header__language header__language_select" : "header__language"}>EN</button>
-          <Link to="/finish">
+          {/* <Link to="/finish">
           Финиш
-        </Link>
+        </Link> */}
         </div>
       </div>
     </header>

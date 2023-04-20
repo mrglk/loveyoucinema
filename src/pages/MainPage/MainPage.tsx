@@ -1,7 +1,7 @@
 import "./MainPage.scss";
-import Score from "../Score/Score";
-import ProgressBar from "../ProgressBar/ProgressBar";
-import FilmButton from "../FilmButton/FilmButton";
+import Score from "../../components/Score/Score";
+import ProgressBar from "../../components/ProgressBar/ProgressBar";
+import FilmButton from "../../components/FilmButton/FilmButton";
 import { useState, useEffect, useRef } from "react";
 import { FilmState, fetchFilm } from "../../store";
 import { useAppSelector, useAppDispatch } from "../../hooks/redux";
@@ -75,7 +75,6 @@ export const MainPage = ({ lang }: MainProps) => {
 
       setTimeout(() => {
         if (currentScore === 9) {
-          // тут нужно пофиксить то, что счет 10 не показывает
           switchToFinishPage();
         } else {
           setRight(null);

@@ -1,8 +1,8 @@
 import "./App.css";
 import Header from "./components/Header/Header";
 import Footer from "./components/Footer/Footer";
-import { MainPage } from "./components/MainPage/MainPage";
-import FinishPage from "./components/FinishPage/FinishPage";
+import { MainPage } from "./pages/MainPage/MainPage";
+import FinishPage from "./pages/FinishPage/FinishPage";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import { createContext, useEffect, useState } from "react";
 import { getPageLang } from "./helpers/helpers";
